@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft Setup - Draft Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-football-ball me-2"></i>
+                Draft Assistant
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link active" href="/setup">
+                    <i class="fas fa-cog me-1"></i>Setup
+                </a>
+                <a class="nav-link" href="/draft">
+                    <i class="fas fa-list me-1"></i>Draft
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">
+                    <i class="fas fa-cog text-primary me-3"></i>
+                    Draft Setup
+                    <i class="fas fa-cog text-primary ms-3"></i>
+                </h1>
+                <p class="text-center text-muted mb-5">Configure your draft format and parameters</p>
+            </div>
+        </div>
+
+        <!-- Setup Progress -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar" id="setup-progress" role="progressbar" style="width: 0%"></div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <small class="text-muted">Step 1: Draft Format</small>
+                    <small class="text-muted">Step 2: Draft Parameters</small>
+                    <small class="text-muted">Step 3: Ready to Draft</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Draft Format -->
+        <div class="row mb-4" id="step-1">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-list me-2"></i>
+                            Step 1: Draft Format
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-4">Select how many players you need at each position:</p>
+                        
+                        <form id="format-form">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="qb" class="form-label">
+                                        <i class="fas fa-user me-1"></i>Quarterbacks (QB)
+                                    </label>
+                                    <select class="form-select" id="qb" name="qb" required>
+                                        <option value="">Select...</option>
+                                        <option value="1">1 QB</option>
+                                        <option value="2">2 QB</option>
+                                        <option value="3">3 QB</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="rb" class="form-label">
+                                        <i class="fas fa-running me-1"></i>Running Backs (RB)
+                                    </label>
+                                    <select class="form-select" id="rb" name="rb" required>
+                                        <option value="">Select...</option>
+                                        <option value="2">2 RB</option>
+                                        <option value="3">3 RB</option>
+                                        <option value="4">4 RB</option>
+                                        <option value="5">5 RB</option>
+                                        <option value="6">6 RB</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="wr" class="form-label">
+                                        <i class="fas fa-user-friends me-1"></i>Wide Receivers (WR)
+                                    </label>
+                                    <select class="form-select" id="wr" name="wr" required>
+                                        <option value="">Select...</option>
+                                        <option value="2">2 WR</option>
+                                        <option value="3">3 WR</option>
+                                        <option value="4">4 WR</option>
+                                        <option value="5">5 WR</option>
+                                        <option value="6">6 WR</option>
+                                        <option value="7">7 WR</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="te" class="form-label">
+                                        <i class="fas fa-user-tie me-1"></i>Tight Ends (TE)
+                                    </label>
+                                    <select class="form-select" id="te" name="te" required>
+                                        <option value="">Select...</option>
+                                        <option value="1">1 TE</option>
+                                        <option value="2">2 TE</option>
+                                        <option value="3">3 TE</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="flex" class="form-label">
+                                        <i class="fas fa-exchange-alt me-1"></i>Flex Positions
+                                    </label>
+                                    <select class="form-select" id="flex" name="flex">
+                                        <option value="0">0 Flex</option>
+                                        <option value="1">1 Flex</option>
+                                        <option value="2">2 Flex</option>
+                                        <option value="3">3 Flex</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="super_flex" class="form-label">
+                                        <i class="fas fa-star me-1"></i>Super Flex
+                                    </label>
+                                    <select class="form-select" id="super_flex" name="super_flex">
+                                        <option value="0">0 Super Flex</option>
+                                        <option value="1">1 Super Flex</option>
+                                        <option value="2">2 Super Flex</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="dst" class="form-label">
+                                        <i class="fas fa-shield-alt me-1"></i>Defense/Special Teams
+                                    </label>
+                                    <select class="form-select" id="dst" name="dst">
+                                        <option value="1">1 DST</option>
+                                        <option value="2">2 DST</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="k" class="form-label">
+                                        <i class="fas fa-bullseye me-1"></i>Kickers
+                                    </label>
+                                    <select class="form-select" id="k" name="k">
+                                        <option value="1">1 K</option>
+                                        <option value="2">2 K</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-arrow-right me-2"></i>Next: Draft Parameters
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Draft Parameters -->
+        <div class="row mb-4" id="step-2" style="display: none;">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-users me-2"></i>
+                            Step 2: Draft Parameters
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-4">Configure your draft settings:</p>
+                        
+                        <form id="parameters-form">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="total_teams" class="form-label">
+                                        <i class="fas fa-users me-1"></i>Total Teams in Draft
+                                    </label>
+                                    <select class="form-select" id="total_teams" name="total_teams" required>
+                                        <option value="">Select...</option>
+                                        <option value="8">8 Teams</option>
+                                        <option value="10">10 Teams</option>
+                                        <option value="12">12 Teams</option>
+                                        <option value="14">14 Teams</option>
+                                        <option value="16">16 Teams</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="current_team" class="form-label">
+                                        <i class="fas fa-user me-1"></i>Your Team Number
+                                    </label>
+                                    <select class="form-select" id="current_team" name="current_team" required>
+                                        <option value="">Select after choosing total teams...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button type="button" class="btn btn-secondary btn-lg me-3" onclick="showStep(1)">
+                                    <i class="fas fa-arrow-left me-2"></i>Back
+                                </button>
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="fas fa-check me-2"></i>Complete Setup
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Ready to Draft -->
+        <div class="row mb-4" id="step-3" style="display: none;">
+            <div class="col-12">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Step 3: Ready to Draft!
+                        </h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <i class="fas fa-trophy fa-5x text-success mb-4"></i>
+                        <h3 class="text-success mb-3">Setup Complete!</h3>
+                        <p class="lead">Your draft is configured and ready to begin.</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6>Draft Format</h6>
+                                        <div id="format-summary"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6>Draft Parameters</h6>
+                                        <div id="parameters-summary"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="/draft" class="btn btn-success btn-lg me-3">
+                                <i class="fas fa-play me-2"></i>Start Drafting
+                            </a>
+                            <a href="/" class="btn btn-outline-secondary btn-lg">
+                                <i class="fas fa-home me-2"></i>Back to Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/setup.js"></script>
+</body>
+</html>
